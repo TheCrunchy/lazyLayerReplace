@@ -246,8 +246,13 @@ public class testMain {
     	    	List<String> replaceWith6 = new ArrayList<>();
     	    	List<String> replaceWith7 = new ArrayList<>();
     	    	List<String> replaceWith8 = new ArrayList<>();
+    	    	Boolean meta = false;
     	    	//get the blocks to replace
-    	    		for (String s: split2) {          
+    	    		for (String s: split2) {
+    	    			if (!s.contains(":")) {
+    	    				meta = true;
+    	    				break;
+    	    			}
     	    	    	if (s.toLowerCase().contains("snow") || s.contains("78")) {
     	    	    		//do stuff for snow layers
     	    	    		layersToRep1.add("78:0");
@@ -286,7 +291,11 @@ public class testMain {
     	    		
     	    		
     	    		//get the blocks to replace it with
-    	    		for (String s: split3) {      
+    	    		for (String s: split3) {
+    	    			if (!s.contains(":")) {
+    	    				meta = true;
+    	    				break;
+    	    			}
     	  	    		if (s.contains(":1") || s.contains(":3") || s.contains(":5") || s.contains(":7") || s.contains(":9") || s.contains(":11") || s.contains(":13") || s.contains(":15")) {
         	    			String[] layers = s.split(":");
         	    			replaceWith1.add(layers[0].replaceAll(",", "") + ":1");
@@ -324,7 +333,7 @@ public class testMain {
     	    		
     	    	//}
     	            int i;
-    	           
+    	           if (!meta) {
     	            for (i = 1; i < 9; i++)
     	            {
     	            	String firsthalf = "";
@@ -400,7 +409,13 @@ public class testMain {
     		            Sponge.getCommandManager().process(player, "/replace " + firsthalf + " " + secondhalf);
     	            }
     
-     	    	
+    	           }
+    	           else {
+    	       		player.sendMessage(Text.of(TextColors.GRAY, "You must provide the meta, such as 259:5"));
+    	    		String response = "&7To get the correct block ID do &3/info &7while holding a tool (like a stick or pickaxe). Then right-click any block to get the ID.";
+    	    		response = response.replaceAll("&", "§");
+    	    		player.sendMessage(Text.of(response));
+    	           }
     	        return CommandResult.success();
     	    }
     	}   	
