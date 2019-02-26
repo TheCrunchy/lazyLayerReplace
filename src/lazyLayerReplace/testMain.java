@@ -249,9 +249,14 @@ public class testMain {
     	    	Boolean meta = false;
     	    	//get the blocks to replace
     	    		for (String s: split2) {
-    	    			if (!s.contains(":")) {
-    	    				meta = true;
-    	    				break;
+    	    			if (s.contains("78") || s.contains("snow")) {
+    	    				meta = false;
+    	    			}
+    	    			else {
+    	    				if (!s.contains(":")) {
+    	    					meta = true;
+    	    					break;
+    	    				}
     	    			}
     	    	    	if (s.toLowerCase().contains("snow") || s.contains("78")) {
     	    	    		//do stuff for snow layers
@@ -292,9 +297,14 @@ public class testMain {
     	    		
     	    		//get the blocks to replace it with
     	    		for (String s: split3) {
-    	    			if (!s.contains(":")) {
-    	    				meta = true;
-    	    				break;
+    	    			if (s.contains("78") || s.contains("snow")) {
+    	    				meta = false;
+    	    			}
+    	    			else {
+    	    				if (!s.contains(":")) {
+    	    					meta = true;
+    	    					break;
+    	    				}
     	    			}
     	  	    		if (s.contains(":1") || s.contains(":3") || s.contains(":5") || s.contains(":7") || s.contains(":9") || s.contains(":11") || s.contains(":13") || s.contains(":15")) {
         	    			String[] layers = s.split(":");
